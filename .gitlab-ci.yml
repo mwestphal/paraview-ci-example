@@ -1,0 +1,17 @@
+stages:
+  - build
+  - test
+
+build-plugin:
+  stage: build
+  script:
+    - mkdir build
+    - cd build
+    - cmake -DParaView_DIR=/paraview_build/bin/paraview -DBUILD_TESTING=ON ..
+    - cmake --build . --config Release --parallel 2
+
+test-plugin:
+  stage: test
+  script:
+    - cd build
+    - ctest
