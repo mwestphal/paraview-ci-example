@@ -1,3 +1,5 @@
+image: $CI_REGISTRY/khaled.hadj-tahar/paraview-image-builder/paraview_master
+
 stages:
   - build
   - test
@@ -5,13 +7,24 @@ stages:
 build-plugin:
   stage: build
   script:
-    - mkdir build
+    - mkdir -p build
     - cd build
     - cmake -DParaView_DIR=/paraview_build/bin/paraview -DBUILD_TESTING=ON ..
     - cmake --build . --config Release --parallel 2
+  tags: 
+    - docker
+  cache: 
+    paths:
+     - build/
 
 test-plugin:
   stage: test
+  needs: ['build-plugin']
   script:
     - cd build
     - ctest
+  tags: 
+    - docker
+  cache: 
+    paths:
+      - build/
