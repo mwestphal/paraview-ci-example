@@ -1,4 +1,4 @@
-image: $CI_REGISTRY/khaled.hadj-tahar/paraview-image-builder/paraview_master
+image: $CI_REGISTRY/visualization/paraview-image-builder/paraview_master
 
 stages:
   - build
