@@ -13,9 +13,12 @@ build-plugin:
     - cmake --build . --config Release --parallel 2
   tags: 
     - docker
-  cache: 
+  artifacts:
+    expire_in: 1h
+    when: always
     paths:
-     - build/
+      - build/
+
 
 test-plugin:
   stage: test
@@ -25,6 +28,5 @@ test-plugin:
     - ctest
   tags: 
     - docker
-  cache: 
-    paths:
-      - build/
+  dependencies:
+    - build-plugin
