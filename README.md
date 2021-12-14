@@ -5,7 +5,9 @@ using gitlab CI.
 
 This project is a standard plugin with a .gitlab-ci.yml added to it.
 
-All is handled in .gitlab-ci.yml
+All is handled in .gitlab-ci.yml, you can copy it to your own project
+on gitlab.kitware.io to be able to build and test your ParaView plugin
+or ParaView based application.
 
 ## Choose ParaView image
 
