@@ -11,8 +11,9 @@ or ParaView based application.
 
 ## Choose ParaView image
 
-To build with another paraview image, just change the `image` tag on top of the .gitlab-ci.yml 
-to point to another image.
+By default, A nightly ParaView master image is used.
 
-Available images can be seen here: 
-https://gitlab.kitware.io/visualization/paraview-image-builder/container_registry
+To build with another paraview image, eg: 5.9.1, 
+just change the `image` tag on top of the .gitlab-ci.yml to point to another image.
+
+Available images can be seen here: https://gitlab.kitware.io/visualization/paraview-image-builder/container_registry
