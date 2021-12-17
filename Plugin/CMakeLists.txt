@@ -15,14 +15,6 @@ set(table_of_contents
 
 paraview_add_plugin(ElevationFilter
   VERSION "1.0"
-  DOCUMENTATION_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Documentation"
-  DOCUMENTATION_ADD_PATTERNS
-    "*.txt"
-    "img/*.jpg"
-    "js/*.js"
-    "style/style.css"
-  DOCUMENTATION_DEPENDENCIES DummyDocumentationCustomTarget
-  DOCUMENTATION_TOC "${table_of_contents}"
   MODULES ElevationFilters
   MODULE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/ElevationFilters/vtk.module")
 
