@@ -25,7 +25,7 @@ test-plugin:
   needs: ['build-plugin']
   script:
     - cd build
-    - ctest
+    - ctest -C Release -j 2 --output-on-failure || ctest -C Release -j 1 --rerun-failed -VV
   tags: 
     - docker
   dependencies:
