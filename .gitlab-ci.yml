@@ -1,10 +1,27 @@
-image: $CI_REGISTRY/visualization/paraview-image-builder/paraview_master
-
 stages:
   - build
   - test
 
+build-plugin-release:
+  image: $CI_REGISTRY/visualization/devops/paraview-superbuild/paraview_release_for_ci:5.10.0
+  stage: build
+  script:
+      # This is needed because the build of ParaView use some absolute path
+    - ln -s /paraview/gitlab-kitware-sciviz-ci/ /builds/gitlab-kitware-sciviz-ci
+    - mkdir -p build
+    - cd build
+    - cmake -DParaView_DIR=/builds/gitlab-kitware-sciviz-ci/build/install/lib/cmake/paraview-5.10/ ..
+    - cmake --build . --config Release --parallel 2
+  tags: 
+    - docker
+  artifacts:
+    expire_in: 1h
+    when: always
+    paths:
+      - build/
+
 build-plugin:
+  image: $CI_REGISTRY/visualization/paraview-image-builder/paraview_master
   stage: build
   script:
     - mkdir -p build
@@ -19,8 +36,8 @@ build-plugin:
     paths:
       - build/
 
-
 test-plugin:
+  image: $CI_REGISTRY/visualization/paraview-image-builder/paraview_master
   stage: test
   needs: ['build-plugin']
   script:
@@ -29,4 +46,6 @@ test-plugin:
   tags: 
     - docker
   dependencies:
+    - build-plugin
+  needs:
     - build-plugin
