@@ -21,7 +21,7 @@ build-plugin-release:
       - build/
 
 build-plugin:
-  image: $CI_REGISTRY/visualization/paraview-image-builder/paraview_master
+  image: $CI_REGISTRY/visualization/devops/paraview-image-builder/paraview-for-ci:latest
   stage: build
   script:
     - mkdir -p build
@@ -37,7 +37,7 @@ build-plugin:
       - build/
 
 test-plugin:
-  image: $CI_REGISTRY/visualization/paraview-image-builder/paraview_master
+  image: $CI_REGISTRY/visualization/devops/paraview-image-builder/paraview-for-ci:latest
   stage: test
   needs: ['build-plugin']
   script:
