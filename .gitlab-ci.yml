@@ -3,7 +3,7 @@ stages:
   - test
 
 build-plugin-release:
-  image: $CI_REGISTRY/visualization/devops/paraview-superbuild/paraview_release_for_ci:5.10.0
+  image: $CI_REGISTRY/visualization/devops/paraview-superbuild/paraview_org-plugin-devel:5.10.0
   stage: build
   script:
       # This is needed because the build of ParaView use some absolute path
