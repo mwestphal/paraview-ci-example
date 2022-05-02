@@ -3,7 +3,7 @@ stages:
   - test
 
 build-plugin-release:
-  image: kitware/paraview_org-plugin-devel:5.10.0
+  image: kitware/paraview_org-plugin-devel:5.10.1
   stage: build
   script:
       # This is needed because the build of ParaView use some absolute path
@@ -21,7 +21,7 @@ build-plugin-release:
       - build/
 
 build-plugin:
-  image: kitware/paraview-for-ci:v5.10.0
+  image: kitware/paraview-for-ci:v5.10.1
   stage: build
   script:
     - mkdir -p build
@@ -37,7 +37,7 @@ build-plugin:
       - build/
 
 test-plugin:
-  image: kitware/paraview-for-ci:v5.10.0
+  image: kitware/paraview-for-ci:v5.10.1
   stage: test
   needs: ['build-plugin']
   script:
