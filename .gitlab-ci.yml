@@ -21,7 +21,7 @@ build-plugin-release:
       - build/
 
 build-plugin:
-  image: kitware/paraview-for-ci:5.10.0
+  image: kitware/paraview-for-ci:v5.10.0
   stage: build
   script:
     - mkdir -p build
@@ -37,7 +37,7 @@ build-plugin:
       - build/
 
 test-plugin:
-  image: kitware/paraview-for-ci:5.10.0
+  image: kitware/paraview-for-ci:v5.10.0
   stage: test
   needs: ['build-plugin']
   script:
