@@ -1,27 +1,42 @@
-# ParaView CI Example
+Introduction
+============
+ParaView CI Example is example on how to build and test a ParaView plugin using CI.
+It contains only a very simple ParaView associated with a `.gitlab-ci.yml` file.
 
-An example project to show how to build and test a plugin
-using gitlab CI.
-
-This project is a standard plugin with a .gitlab-ci.yml added to it.
-
-All is handled in .gitlab-ci.yml, you can copy it to your own project
+All is handled in `.gitlab-ci.yml`, you can copy it to your own project
 on any gitlab instance to be able to build and test your ParaView plugin
 or ParaView based application.
 
-## Choose ParaView image
+This example is developed by [Kitware SAS][].
 
-By default, the latest build of paraview is used.
+[Kitware SAS]: https://www.kitware.eu
 
-To build with another paraview image, eg: 5.9.1,
-just change the `image` tag in .gitlab-ci.yml to point to another image.
+Build and test with a ParaView image
+====================================
+The provided `.gitlab-ci.yml` use ParaView v5.10.1 to build and test.
+To choose another version, just change the `image` tag in .gitlab-ci.yml to point to another image.
+Available images are visible on [paraview-for-ci][] dockerhub repository.
 
-Available images can be seen here: https://hub.docker.com/r/kitware/paraview-for-ci
+Graphical testing is supported using a [Xvfb][] entry point.
 
-## Building a plugin for the paraview.org binary release
+[paraview-for-ci]: https://hub.docker.com/r/kitware/paraview-for-ci
+[Xvfb]: https://en.wikipedia.org/wiki/Xvfb
 
-This repository also shows how to build a ParaView plugin for the paraview.org binary release
-in your CI. It builds by default for ParaView v5.10.0, but to choose the version,
-just change the `image` tag in the build_release stage image.
+Building a plugin for the paraview.org binary release
+=====================================================
+The provided `.gitlab-ci.yml` also build a plugin compatible with the [paraview.org][] v5.10.1 binary release.
+The artifact can be recovered and contains the compatible binary plugin.
+To build a plugin compatible with another version, just change the `image` tag in the build_plugin_release stage.
+Available images are visible on [paraview_org-plugin-devel][] dockerhub repository.
 
-Available images can be seen here: https://hub.docker.com/r/kitware/paraview_org-plugin-devel/tags
+[paraview_org-plugin-devel]: https://hub.docker.com/r/kitware/paraview_org-plugin-devel/tags
+
+License
+=======
+
+This repository is distributed under the OSI-approved BSD 3-clause License.
+See [License.txt][] for details. For additional licenses, refer to the
+[ParaView License][].
+
+[License.txt]: License.txt
+[ParaView License]: http://www.paraview.org/paraview-license/
