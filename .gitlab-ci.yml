@@ -14,6 +14,7 @@ build-plugin-release:
     - cmake --build . --config Release --parallel 2
   tags: 
     - docker
+    - linux
     - paraview
   artifacts:
     expire_in: 1h
@@ -31,6 +32,7 @@ build-plugin:
     - cmake --build . --config Release --parallel 2
   tags: 
     - docker
+    - linux
     - paraview
   artifacts:
     expire_in: 1h
@@ -46,6 +48,7 @@ test-plugin:
     - ctest -C Release -j 2 --output-on-failure || ctest -C Release -j 1 --rerun-failed -VV
   tags: 
     - docker
+    - linux
     - paraview
   dependencies:
     - build-plugin
