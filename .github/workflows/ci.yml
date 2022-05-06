@@ -37,7 +37,7 @@ jobs:
 
     - name: Test
       working-directory: ${{github.workspace}}/build
-      run: xvfb-run ctest -j 2 --output-on-failure || ctest -j 1 --rerun-failed -VV
+      run: xvfb-run ctest -j 2 --output-on-failure || xvfb-run ctest -j 1 --rerun-failed -VV
 
   build_binary:
     if: github.event.pull_request.draft == false
