@@ -10,7 +10,7 @@ build-plugin-release:
     - ln -s /paraview/gitlab-kitware-sciviz-ci/ /builds/gitlab-kitware-sciviz-ci
     - mkdir -p build
     - cd build
-    - cmake -DParaView_DIR=/builds/gitlab-kitware-sciviz-ci/build/install/lib/cmake/paraview-5.10/ ..
+    - cmake -DParaView_DIR=/builds/gitlab-kitware-sciviz-ci/build/install/lib/cmake/paraview-5.10/ -DCMAKE_BUILD_TYPE=Release ..
     - cmake --build . --parallel 2
   tags: 
     - docker
