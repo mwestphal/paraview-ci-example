@@ -2,7 +2,7 @@ stages:
   - build
   - test
 
-build-plugin-release:
+build_binary_compatible:
   image: kitware/paraview_org-plugin-devel:5.10.1
   stage: build
   script:
@@ -22,7 +22,7 @@ build-plugin-release:
     paths:
       - build/
 
-build-plugin:
+build_plugin:
   image: kitware/paraview-for-ci:v5.10.1
   stage: build
   script:
@@ -40,7 +40,7 @@ build-plugin:
     paths:
       - build/
 
-test-plugin:
+test_plugin:
   image: kitware/paraview-for-ci:v5.10.1
   stage: test
   script:
@@ -51,6 +51,6 @@ test-plugin:
     - linux
     - paraview
   dependencies:
-    - build-plugin
+    - build_plugin
   needs:
-    - build-plugin
+    - build_plugin
