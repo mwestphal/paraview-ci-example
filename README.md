@@ -1,9 +1,9 @@
 Introduction
 ============
-ParaView CI Example is example on how to build, test and release a ParaView plugin using CI.
-It contains only a very simple ParaView plugin associated with a `.gitlab-ci.yml` and`.github/workflows/ci.yml` files.
+ParaView CI Example is an example on how to build, test and release a ParaView plugin using CI.
+It contains only a very simple ParaView plugin associated with `.gitlab-ci.yml` and`.github/workflows/ci.yml` files.
 
-All is handled in the yml files, you can copy the one you need in your own project
+Everything is handled in the yml files. You can copy the one you need in your own project,
 on any gitlab instance or github to be able to build and test your ParaView plugin.
 
 This example is developed by [Kitware SAS][].
