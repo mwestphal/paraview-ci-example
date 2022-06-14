@@ -12,7 +12,10 @@ jobs:
     if: github.event.pull_request.draft == false
 
     runs-on: ubuntu-latest
-    container: kitware/paraview-for-ci:v5.10.1
+    strategy:
+      matrix:
+        version: [ v5.8.1, v5.9.1, v5.10.1, latest ]
+    container: kitware/paraview-for-ci:${{ matrix.version }}
 
     steps:
 
