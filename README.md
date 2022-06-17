@@ -42,3 +42,12 @@ See [License.txt][] for details. For additional licenses, refer to the
 
 [License.txt]: License.txt
 [ParaView License]: http://www.paraview.org/paraview-license/
+
+Technicalities
+==============
+
+In the .github example, a CI matrix is used to build against different version of ParaView.
+Feel free to modify the values in this matrix as you see fit.
+
+In the .gitlab example, jobs can be disabled using CI variables. eg: set `DISABLE_V510` to `True`.
+This can be practical when sharing this file among multiples repositories.
