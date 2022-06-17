@@ -21,6 +21,10 @@ build_binary_compatible:
     when: always
     paths:
       - build/
+  rules:
+    - if: $DISABLE_BINARY == "True"
+      when: never
+    - when: on_success
 
 .build_plugin:
   stage: build
@@ -50,15 +54,43 @@ build_binary_compatible:
     - linux
     - paraview
 
+.latest:    
+  image: kitware/paraview-for-ci:latest
+  rules:
+    - if: $DISABLE_LATEST == "True"
+      when: never
+    - when: on_success
+
+.v5101:    
+  image: kitware/paraview-for-ci:v5.10.1
+  rules:
+    - if: $DISABLE_V510 == "True"
+      when: never
+    - when: on_success
+
+.v591:    
+  image: kitware/paraview-for-ci:v5.9.1
+  rules:
+    - if: $DISABLE_V59 == "True"
+      when: never
+    - when: on_success
+
+.v581:    
+  image: kitware/paraview-for-ci:v5.8.1
+  rules:
+    - if: $DISABLE_V58 == "True"
+      when: never
+    - when: on_success
+
 build_plugin_latest:
   extends:
     - .build_plugin
-  image: kitware/paraview-for-ci:latest
+    - .latest
 
 test_plugin_latest:
   extends:
     - .test_plugin
-  image: kitware/paraview-for-ci:latest
+    - .latest
   dependencies:
     - build_plugin_latest
   needs:
@@ -67,12 +99,12 @@ test_plugin_latest:
 build_plugin_v5.10.1:
   extends:
     - .build_plugin
-  image: kitware/paraview-for-ci:v5.10.1
+    - .v5101
 
 test_plugin_v5.10.1:
   extends:
     - .test_plugin
-  image: kitware/paraview-for-ci:v5.10.1
+    - .v5101
   dependencies:
     - build_plugin_v5.10.1
   needs:
@@ -81,12 +113,12 @@ test_plugin_v5.10.1:
 build_plugin_v5.9.1:
   extends:
     - .build_plugin
-  image: kitware/paraview-for-ci:v5.9.1
+    - .v591
 
 test_plugin_v5.9.1:
   extends:
     - .test_plugin
-  image: kitware/paraview-for-ci:v5.9.1
+    - .v591
   dependencies:
     - build_plugin_v5.9.1
   needs:
@@ -95,12 +127,12 @@ test_plugin_v5.9.1:
 build_plugin_v5.8.1:
   extends:
     - .build_plugin
-  image: kitware/paraview-for-ci:v5.8.1
+    - .v581
 
 test_plugin_v5.8.1:
   extends:
     - .test_plugin
-  image: kitware/paraview-for-ci:v5.8.1
+    - .v581
   dependencies:
     - build_plugin_v5.8.1
   needs:
