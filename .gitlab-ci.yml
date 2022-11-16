@@ -3,7 +3,7 @@ stages:
   - test
 
 build_binary_compatible:
-  image: kitware/paraview_org-plugin-devel:5.10.1
+  image: kitware/paraview_org-plugin-devel:latest
   stage: build
   before_script:
     - source /opt/rh/devtoolset-7/enable
