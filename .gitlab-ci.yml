@@ -2,9 +2,24 @@ stages:
   - build
   - test
 
-build_binary_compatible:
+.binary_latest:
+  image: kitware/paraview_org-plugin-devel:latest
+  rules:
+    - if: $DISABLE_LATEST == "True"
+      when: never
+    - when: on_success
+
+.binary_5101:
   image: kitware/paraview_org-plugin-devel:5.10.1
+  rules:
+    - if: $DISABLE_V510 == "True"
+      when: never
+    - when: on_success
+
+.build_binary_compatible:
   stage: build
+  before_script:
+    - source /opt/rh/devtoolset-7/enable
   script:
       # This is needed because the build of ParaView use some absolute path
     - ln -s /paraview/gitlab-kitware-sciviz-ci/ /builds/gitlab-kitware-sciviz-ci
@@ -44,7 +59,6 @@ build_binary_compatible:
       - build/
 
 .test_plugin:
-  image: kitware/paraview-for-ci:v5.10.1
   stage: test
   script:
     - cd build
@@ -54,33 +68,43 @@ build_binary_compatible:
     - linux
     - paraview
 
-.latest:    
+.latest:
   image: kitware/paraview-for-ci:latest
   rules:
     - if: $DISABLE_LATEST == "True"
       when: never
     - when: on_success
 
-.v5101:    
+.v5101:
   image: kitware/paraview-for-ci:v5.10.1
   rules:
     - if: $DISABLE_V510 == "True"
       when: never
     - when: on_success
 
-.v591:    
+.v591:
   image: kitware/paraview-for-ci:v5.9.1
   rules:
     - if: $DISABLE_V59 == "True"
       when: never
     - when: on_success
 
-.v581:    
+.v581:
   image: kitware/paraview-for-ci:v5.8.1
   rules:
     - if: $DISABLE_V58 == "True"
       when: never
     - when: on_success
+
+build_binary_compatible_latest:
+  extends:
+    - .build_binary_compatible
+    - .binary_latest
+
+build_binary_compatible_5.10.1:
+  extends:
+    - .build_binary_compatible
+    - .binary_5101
 
 build_plugin_latest:
   extends:
