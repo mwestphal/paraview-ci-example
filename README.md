@@ -12,8 +12,8 @@ This example is developed by [Kitware SAS][].
 
 Build and test with a ParaView image
 ====================================
-The provided yml files use ParaView v5.10.1 to build and test.
-To choose another version, just change the `image` tag in .gitlab-ci.yml to point to another image.
+The provided yml files use multiple ParaView versions to build and test.
+To select the version, keep the steps using the right `image` tag.
 Available images are visible on [paraview-for-ci][] dockerhub repository.
 
 Graphical testing is supported using [xvfb-run][].
@@ -23,9 +23,9 @@ Graphical testing is supported using [xvfb-run][].
 
 Building a plugin for the paraview.org binary release
 =====================================================
-The provided yml files also build a plugin compatible with the [paraview.org][] v5.10.1 binary release.
+The provided yml files also build a plugin compatible with the multiple [paraview.org][] binary releases.
 The artifact can be recovered and contains the binary compatible plugin.
-To build a plugin compatible with another version, just change the `image` tag in the build_binary_compatible stage.
+To select the version, keep the steps using the right `image` tag.
 Available images are visible on [paraview_org-plugin-devel][] dockerhub repository.
 
 [paraview_org-plugin-devel]: https://hub.docker.com/r/kitware/paraview_org-plugin-devel/tags
