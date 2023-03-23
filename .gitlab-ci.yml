@@ -36,7 +36,7 @@ stages:
     - cmake --build . --parallel 2
   tags:
     - docker
-    - linux
+    - linux-x86_64
     - paraview
   artifacts:
     expire_in: 1h
@@ -57,7 +57,7 @@ stages:
     - cmake --build . --parallel 2
   tags:
     - docker
-    - linux
+    - linux-x86_64
     - paraview
   artifacts:
     expire_in: 1h
@@ -72,7 +72,7 @@ stages:
     - xvfb-run ctest -j 2 --output-on-failure || xvfb-run ctest -j 1 --rerun-failed -VV
   tags:
     - docker
-    - linux
+    - linux-x86_64
     - paraview
 
 .latest:
