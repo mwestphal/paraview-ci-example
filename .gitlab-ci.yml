@@ -1,3 +1,13 @@
+workflow:
+   rules:
+     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_REF_NAME == "master"
+       when: always
+     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_REF_NAME == "main"
+       when: always
+     - if: $CI_MERGE_REQUEST_ID
+       when: always
+     - when: never
+
 stages:
   - build
   - test
