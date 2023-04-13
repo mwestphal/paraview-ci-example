@@ -14,6 +14,8 @@ stages:
 
 .binary_latest:
   image: kitware/paraview_org-plugin-devel:latest
+  variables:
+    PARAVIEW_VERSION: "latest"
   rules:
     - if: $DISABLE_LATEST == "True"
       when: never
@@ -21,6 +23,8 @@ stages:
 
 .binary_5110:
   image: kitware/paraview_org-plugin-devel:5.11.0
+  variables:
+    PARAVIEW_VERSION: "5.11.0"
   rules:
     - if: $DISABLE_V511 == "True"
       when: never
@@ -28,6 +32,8 @@ stages:
 
 .binary_5101:
   image: kitware/paraview_org-plugin-devel:5.10.1
+  variables:
+    PARAVIEW_VERSION: "5.10.1"
   rules:
     - if: $DISABLE_V510 == "True"
       when: never
@@ -87,6 +93,8 @@ stages:
 
 .latest:
   image: kitware/paraview-for-ci:latest
+  variables:
+    PARAVIEW_VERSION: "latest"
   rules:
     - if: $DISABLE_LATEST == "True"
       when: never
@@ -94,6 +102,8 @@ stages:
 
 .v5110:
   image: kitware/paraview-for-ci:v5.11.0
+  variables:
+    PARAVIEW_VERSION: "5.11.0"
   rules:
     - if: $DISABLE_V511 == "True"
       when: never
@@ -101,6 +111,8 @@ stages:
 
 .v5101:
   image: kitware/paraview-for-ci:v5.10.1
+  variables:
+    PARAVIEW_VERSION: "5.10.1"
   rules:
     - if: $DISABLE_V510 == "True"
       when: never
@@ -108,6 +120,8 @@ stages:
 
 .v591:
   image: kitware/paraview-for-ci:v5.9.1
+  variables:
+    PARAVIEW_VERSION: "5.9.1"
   rules:
     - if: $DISABLE_V59 == "True"
       when: never
@@ -115,6 +129,8 @@ stages:
 
 .v581:
   image: kitware/paraview-for-ci:v5.8.1
+  variables:
+    PARAVIEW_VERSION: "5.8.1"
   rules:
     - if: $DISABLE_V58 == "True"
       when: never
