@@ -28,7 +28,7 @@ stages:
   rules:
     - if: $DISABLE_5_11 == "True"
       when: never
-    - if: $DISABLE_v5110 == "True"
+    - if: $DISABLE_V5110 == "True"
       when: never
     - when: on_success
 
@@ -39,7 +39,7 @@ stages:
   rules:
     - if: $DISABLE_5_10 == "True"
       when: never
-    - if: $DISABLE_v5101 == "True"
+    - if: $DISABLE_V5101 == "True"
       when: never
     - when: on_success
 
@@ -111,7 +111,7 @@ stages:
   rules:
     - if: $DISABLE_5_11 == "True"
       when: never
-    - if: $DISABLE_v5110 == "True"
+    - if: $DISABLE_V5110 == "True"
       when: never
     - when: on_success
 
@@ -122,7 +122,7 @@ stages:
   rules:
     - if: $DISABLE_5_10 == "True"
       when: never
-    - if: $DISABLE_v5101 == "True"
+    - if: $DISABLE_V5101 == "True"
       when: never
     - when: on_success
 
@@ -133,7 +133,7 @@ stages:
   rules:
     - if: $DISABLE_5_9 == "True"
       when: never
-    - if: $DISABLE_v591 == "True"
+    - if: $DISABLE_V591 == "True"
       when: never
     - when: on_success
 
@@ -144,7 +144,7 @@ stages:
   rules:
     - if: $DISABLE_5_8 == "True"
       when: never
-    - if: $DISABLE_v581 == "True"
+    - if: $DISABLE_V581 == "True"
       when: never
     - when: on_success
 
