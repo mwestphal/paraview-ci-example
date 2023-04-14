@@ -28,6 +28,8 @@ stages:
   rules:
     - if: $DISABLE_5_11 == "True"
       when: never
+    - if: $DISABLE_v5110 == "True"
+      when: never
     - when: on_success
 
 .binary_5_10:
@@ -36,6 +38,8 @@ stages:
     PARAVIEW_VERSION: "5.10.1"
   rules:
     - if: $DISABLE_5_10 == "True"
+      when: never
+    - if: $DISABLE_v5101 == "True"
       when: never
     - when: on_success
 
@@ -107,6 +111,8 @@ stages:
   rules:
     - if: $DISABLE_5_11 == "True"
       when: never
+    - if: $DISABLE_v5110 == "True"
+      when: never
     - when: on_success
 
 .v5_10:
@@ -115,6 +121,8 @@ stages:
     PARAVIEW_VERSION: "5.10.1"
   rules:
     - if: $DISABLE_5_10 == "True"
+      when: never
+    - if: $DISABLE_v5101 == "True"
       when: never
     - when: on_success
 
@@ -125,6 +133,8 @@ stages:
   rules:
     - if: $DISABLE_5_9 == "True"
       when: never
+    - if: $DISABLE_v591 == "True"
+      when: never
     - when: on_success
 
 .v5_8:
@@ -133,6 +143,8 @@ stages:
     PARAVIEW_VERSION: "5.8.1"
   rules:
     - if: $DISABLE_5_8 == "True"
+      when: never
+    - if: $DISABLE_v581 == "True"
       when: never
     - when: on_success
 
