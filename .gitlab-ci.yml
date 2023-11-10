@@ -67,6 +67,7 @@ stages:
     - if: $DISABLE_BINARY == "True"
       when: never
     - when: on_success
+  interruptible: true
 
 .build_plugin:
   stage: build
@@ -84,6 +85,7 @@ stages:
     when: always
     paths:
       - build/
+  interruptible: true
 
 .test_plugin:
   stage: test
@@ -94,6 +96,7 @@ stages:
     - docker
     - linux-x86_64
     - paraview
+  interruptible: true
 
 .latest:
   image: kitware/paraview-for-ci:latest
