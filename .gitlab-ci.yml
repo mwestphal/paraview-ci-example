@@ -91,7 +91,7 @@ stages:
   stage: test
   script:
     - cd build
-    - xvfb-run ctest -j 2 --output-on-failure || xvfb-run ctest -j 1 --rerun-failed -VV
+    - xvfb-run ctest -j 2 --output-on-failure --no-tests=error || xvfb-run ctest -j 1 --rerun-failed --no-tests=error -VV
   tags:
     - docker
     - linux-x86_64
