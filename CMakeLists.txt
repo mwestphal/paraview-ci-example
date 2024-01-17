@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.8)
 project(ElevationFilter)
 
 find_package(ParaView REQUIRED)
+message(STATUS "ParaView found: ${ParaView_VERSION}")
 
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 enable_testing()
