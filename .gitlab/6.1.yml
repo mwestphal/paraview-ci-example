@@ -1,0 +1,44 @@
+.rules_6_1:
+  rules:
+    - if: $DISABLE_6_1 == "True"
+      when: never
+
+.binary_6_1:
+  image: kitware/paraview_org-plugin-devel:6.1.0
+  variables:
+    PARAVIEW_VERSION: "6.1.0"
+
+build_binary_compatible_6.1.0:
+  extends:
+    - .binary_compatible_gcc10
+    - .binary_6_1
+    - .build_binary_compatible
+  rules:
+    - !reference [".rules_binary_compatible", "rules"]
+    - !reference [".rules_6_1", "rules"]
+    - when: on_success
+
+.v6_1:
+  image: kitware/paraview-for-ci:v6.1.0
+  variables:
+    PARAVIEW_VERSION: "6.1.0"
+
+build_plugin_v6.1.0:
+  extends:
+    - .v6_1
+    - .build_plugin
+  rules:
+    - !reference [".rules_6_1", "rules"]
+    - when: on_success
+
+test_plugin_v6.1.0:
+  extends:
+    - .v6_1
+    - .test_plugin
+  dependencies:
+    - build_plugin_v6.1.0
+  needs:
+    - build_plugin_v6.1.0
+  rules:
+    - !reference [".rules_6_1", "rules"]
+    - when: on_success
